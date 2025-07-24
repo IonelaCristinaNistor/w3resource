@@ -172,7 +172,7 @@
 # print(even_or_odd(2))
 # print(even_or_odd(3))
 
-# ------- with list ---------
+# 22 - Count the number of occurrences in a list
 # def list_count_4(nums):
 #     count = 0
 #     for num in nums:
@@ -213,17 +213,197 @@
 # print(list_count([14, 24, 12, 25, 34, 44]))
 
 # Write a function that finds the most frequently occurring number in a list.
-def list_count(nums):
-    if not nums:
-        return None
-    freq = {} # empty dictionary
-    for num in nums:
-        freq[num] = freq.get(num, 0) + 1
-        # check if "num" already exists in the dictionary
-        # if it does, it returns the current count
-        # if it doesn't, it returns 0
-        # then it adds 1 to that count and stores it back in freq[num]
-    most_freq = max(freq, key=freq.get)
-    return most_freq
-nums_list = [1, 3, 2, 3, 4, 3, 2, 1]
-print("Most frequent number: ", list_count(nums_list))
+# def list_count(nums):
+#     if not nums:
+#         return None
+#     freq = {} # empty dictionary
+#     for num in nums:
+#         freq[num] = freq.get(num, 0) + 1
+#         # check if "num" already exists in the dictionary
+#         # if it does, it returns the current count
+#         # if it doesn't, it returns 0
+#         # then it adds 1 to that count and stores it back in freq[num]
+#     most_freq = max(freq, key=freq.get)
+#     return most_freq
+# nums_list = [1, 3, 2, 3, 4, 3, 2, 1]
+# print("Most frequent number: ", list_count(nums_list))
+
+# 23 - n (non-negative integer) copies of the first 2 characters for a given string
+# def substring_copy(text, n):
+#     flen = 2
+#     if flen > len(text):
+#         flen = len(text)
+#     substr = text[:flen]
+#     result = ""
+#     for i in range(n):
+#         result = result + substr
+#     return result
+# print(substring_copy('abcdef', 2))
+# print(substring_copy('p', 3))
+
+# Write a Python program to get n copies the last 2 characters of a string.
+# def substring_copy(text, n):
+#     substr = text[-2:] if len(text) >= 2 else text
+#     return substr * n
+# print(substring_copy('abcdef', 2))
+# print(substring_copy('p', 3))
+
+# Write a function that returns n copies of the first 3 characters
+# of a string, or the entire string if it has fewer than 3 characters.
+# def substring_copy(text, n):
+#     substr = text[:3] if len(text) >= 3 else text
+#     return substr * n
+# print(substring_copy('abcdef', 2))
+# print(substring_copy('p', 3))
+
+# Write a Python program that generates n copies of a given string, but every second copy is reversed.
+# def substring_copy(text, n):
+#     result = ""
+#     for i in range(n):
+#         if (i + 1) % 2 == 0:
+#             result += text[::-1] # reverse on even copies
+#         else:
+#             result += text # normal on odd copies
+#     return result
+# print(substring_copy('abc', 5))
+# print(substring_copy('xyz', 4))
+
+# Write a function that takes a string and n, and returns an alternating pattern of uppercase and lowercase repeated n times
+# def substring_copy(text, n):
+#     result = ''
+#     for i in range(n):
+#         if i % 2 == 0:
+#             result += text.upper()
+#         else:
+#             result += text.lower()
+#     return result
+# print(substring_copy('hello', 5))
+# print(substring_copy('john', 3))
+
+# 24 - Vowel tester
+# def is_vowel(char):
+#     all_vowels = 'aeiouAEIOU'
+#     return char in all_vowels
+# print(is_vowel('c'))
+# print(is_vowel('a'))
+# print(is_vowel('A'))
+
+# Write a Python program to check if a string contains at least one vowel
+# def contains_vowels(text):
+#     vowels = 'aeiouAEIOU'
+#     for char in text:
+#         if char in vowels:
+#             return True
+#     return False
+
+# or with any and generator expression
+# def contains_vowels(text):
+#     return any(char in 'aeiouAEIOU' for char in text)
+#
+# print(contains_vowels('hello'))
+# print(contains_vowels('sky'))
+# print(contains_vowels('PYTHON'))
+# print(contains_vowels(""))
+
+# Write a script that counts the number of vowels in a given string
+# def count_vowels(text):
+#     count = 0
+#     vowels = 'aeiouAEIOU'
+#     for char in text:
+#         if char in vowels:
+#             count += 1
+#     return count
+# print(count_vowels('aeroport'))
+# print(count_vowels('sky'))
+# print(count_vowels('PYTHON'))
+# print(count_vowels(''))
+
+# Write a function that removes all vowels from a given string.
+# def remove_vowels(text):
+#     result = ''
+#     for char in text:
+#         if char.lower() not in 'aeiouAEIOU':
+#             result += char
+#     return result
+# print(remove_vowels('OHello World'))
+# print(remove_vowels('Python'))
+
+# Write a program that finds the longest consecutive sequence of vowels in a string.
+# def longest_vowel_seq(s):
+#     vowels = 'aeiouAEIOU'
+#     max_len = 0
+#     current_len = 0
+#     max_seq = ''
+#     start = 0
+#
+#     for i, char in enumerate(s):
+#         if char in vowels:
+#             if current_len == 0:
+#                 start = i
+#             current_len += 1
+#             if current_len > max_len:
+#                 max_len = current_len
+#                 max_seq = s[start:start + current_len]
+#         else:
+#             current_len = 0
+#     return max_seq, max_len
+#
+# text = "beautiful queueing is a continuous activity"
+# seq, length = longest_vowel_seq(text)
+# print(f"Longest consecutive vowel sequence: '{seq}' with length {length}")
+
+# 25 - Check whether a specified value is contained in a group of values
+
+# def in_group_member(group_data,  n):
+#     for value in group_data:
+#         if n == value:
+#             return True
+#     return False
+# print(in_group_member([1, 5, 8, 3], 3))
+# print(in_group_member([5, 8, 3], -1))
+
+# Solution 2
+# def in_group_member(group_data, n):
+#     return n in group_data
+# print(in_group_member([1, 5, 8, 3], 3))
+# print(in_group_member([5, 8, 3], -1))
+
+# Write a Python program to check if multiple given values exist in a list
+# def in_group_member(values, target_list):
+#     return all(val in target_list for val in values)
+# print(in_group_member([6, 1],[4, 3, 2, 1, 6]))
+
+# Write a script to check if all elements in a list are within a given range.
+# def all_in_range(lst, min_val, max_val):
+#     return all(min_val <= num <= max_val for num in lst)
+# numbers = [5, 8, 10, 6, 7]
+# min_range= 5
+# max_range = 10
+# if all_in_range(numbers, min_range, max_range):
+#     print("All elements are within range")
+# else:
+#     print("Not all elements are within the range")
+
+# Write a function that finds the first occurrence of a specified value in a list and returns its index.
+# def find_first_index(lst, value):
+#     for i, item in enumerate(lst):
+#         if item == value:
+#             return i
+#     return -1
+# my_list = [10, 20, 30, 40, 20]
+# value_to_find = 20
+# index = find_first_index(my_list, value_to_find)
+# print(f"First occurrence of {value_to_find} is at index {index}")
+
+# Write a program that determines whether any element in one list is present in another list
+# def has_common_element(list1, list2):
+#     return any(elem in list2 for elem in list1)
+#
+# list_a = [1, 3, 5, 7]
+# list_b = [2, 4, 6, 7]
+# if has_common_element(list_a, list_b):
+#     print("There is at least one common element")
+# else:
+#     print("There are no common element")
+
+# 26 - List Histogram
